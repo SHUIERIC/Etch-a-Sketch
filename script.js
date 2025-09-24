@@ -9,3 +9,14 @@ for (i=0; i< 256; i++) {
     grids.className = "grid"
     gridContainer.appendChild (grids)
 }
+
+
+// hover (eventListener Enter) that when mouse on the grid change colour 
+
+const eachGrid = document.querySelectorAll (".grid")
+
+eachGrid.forEach (grid => 
+grid.addEventListener ("mouseenter", (e) => {
+    grid.style.backgroundColor = "green";
+})
+)
