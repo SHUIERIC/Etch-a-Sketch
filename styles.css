@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divContainer {
+    display: flex;
+    width: 480px;
+    height: 480px;
+    flex-wrap: wrap;
+
+}
+
+.grid {
+     border-style: solid;
+     border-color: black;
+     box-sizing: border-box;
+     width: 30px;
+     height: 30px;
+}
