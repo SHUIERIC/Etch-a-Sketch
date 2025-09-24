@@ -1,22 +1,36 @@
-// webpage of 16x16 square divs using js (in js) 
-// have the grid squares inside a container div in html
-// use flex box to have div appear like grid (in css)
-
+const btn = document.querySelector (".numberBtn")
 const gridContainer = document.querySelector(".divContainer")
+const eachGrid = document.querySelectorAll (".grid")
 
-for (i=0; i< 256; i++) {
+
+for (i=0; i< 16*16; i++) {
     const grids = document.createElement ("div");
     grids.className = "grid"
     gridContainer.appendChild (grids)
-}
+    
+    grids.style.width = "60px";
+    grids.style.height = "60px";
+    grids.addEventListener ("mouseenter", (e) => {
+    grids.style.backgroundColor = "green";
+})}
 
 
-// hover (eventListener Enter) that when mouse on the grid change colour 
+btn.addEventListener ("click", (e) => {
+    let userNum = Number (prompt ("Enter the number of grid per side (<= 100) "),);
+    console.log (userNum)
+    if (userNum <=100) {
+        gridContainer.innerHTML = "";
+        
+        for (i=0; i< userNum*userNum; i++) {
+            const grids = document.createElement ("div");
+            grids.className = "grid"
+            gridContainer.appendChild (grids)
+            const size = 960 / userNum;
+            grids.style.width = `${size}px`;
+            grids.style.height = `${size}px`;
+        
+}}})
 
-const eachGrid = document.querySelectorAll (".grid")
-
-eachGrid.forEach (grid => 
-grid.addEventListener ("mouseenter", (e) => {
-    grid.style.backgroundColor = "green";
-})
-)
+gridContainer.addEventListener ("mouseover", (e) => { 
+                if (e.target.classList.contains ("grid")) {
+                e.target.style.backgroundColor = "green";}})

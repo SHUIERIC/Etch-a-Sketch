@@ -1,21 +1,20 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .divContainer {
     display: flex;
-    width: 480px;
-    height: 480px;
+    width: 960px;
+    height: 960px;
     flex-wrap: wrap;
 
 }
 
 .grid {
      border-style: solid;
-     border-color: black;
+     border: 1px solid black;
      box-sizing: border-box;
-     width: 30px;
-     height: 30px;
 }
