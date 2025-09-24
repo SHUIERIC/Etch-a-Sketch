@@ -3,6 +3,7 @@ const gridContainer = document.querySelector(".divContainer")
 const eachGrid = document.querySelectorAll (".grid")
 
 
+//Default 16 by 16 size grid 
 for (i=0; i< 16*16; i++) {
     const grids = document.createElement ("div");
     grids.className = "grid"
@@ -11,10 +12,13 @@ for (i=0; i< 16*16; i++) {
     grids.style.width = "60px";
     grids.style.height = "60px";
     grids.addEventListener ("mouseenter", (e) => {
-    grids.style.backgroundColor = "green";
+                let r = Math.floor(Math.random()* 256);
+                let g = Math.floor(Math.random()* 256);
+                let b = Math.floor(Math.random()* 256);
+                e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 })}
 
-
+//Prompt for user to change grid size
 btn.addEventListener ("click", (e) => {
     let userNum = Number (prompt ("Enter the number of grid per side (<= 100) "),);
     console.log (userNum)
@@ -31,6 +35,13 @@ btn.addEventListener ("click", (e) => {
         
 }}})
 
+// Listener for grid 
 gridContainer.addEventListener ("mouseover", (e) => { 
                 if (e.target.classList.contains ("grid")) {
-                e.target.style.backgroundColor = "green";}})
+                
+                let r = Math.floor(Math.random()* 256);
+                let g = Math.floor(Math.random()* 256);
+                let b = Math.floor(Math.random()* 256);
+                e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+                }}
+)
