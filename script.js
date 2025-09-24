@@ -1,7 +1,4 @@
-const btn = document.querySelector (".numberBtn")
 const gridContainer = document.querySelector(".divContainer")
-const eachGrid = document.querySelectorAll (".grid")
-
 
 //Default 16 by 16 size grid 
 for (i=0; i< 16*16; i++) {
@@ -11,17 +8,15 @@ for (i=0; i< 16*16; i++) {
     
     grids.style.width = "60px";
     grids.style.height = "60px";
-    grids.addEventListener ("mouseenter", (e) => {
-                let r = Math.floor(Math.random()* 256);
-                let g = Math.floor(Math.random()* 256);
-                let b = Math.floor(Math.random()* 256);
-                e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-})}
 
-//Prompt for user to change grid size
+    grids.darkLevel = 0
+}
+
+//Prompt for user to change grid size a
+const btn = document.querySelector (".numberBtn")
+
 btn.addEventListener ("click", (e) => {
     let userNum = Number (prompt ("Enter the number of grid per side (<= 100) "),);
-    console.log (userNum)
     if (userNum <=100) {
         gridContainer.innerHTML = "";
         
@@ -32,16 +27,26 @@ btn.addEventListener ("click", (e) => {
             const size = 960 / userNum;
             grids.style.width = `${size}px`;
             grids.style.height = `${size}px`;
-        
-}}})
 
-// Listener for grid 
-gridContainer.addEventListener ("mouseover", (e) => { 
-                if (e.target.classList.contains ("grid")) {
-                
-                let r = Math.floor(Math.random()* 256);
-                let g = Math.floor(Math.random()* 256);
-                let b = Math.floor(Math.random()* 256);
-                e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-                }}
-)
+            grids.darkLevel = 0
+            }
+        }
+    })
+
+
+//Eventlistener for all grids to change color and turn black on 10 hits 
+
+gridContainer.addEventListener ("mouseover", (e) => {
+    let r = Math.floor(Math.random()* 256);
+    let g = Math.floor(Math.random()* 256);
+    let b = Math.floor(Math.random()* 256);
+
+    e.target.darkLevel = Math.min (e.target.darkLevel +0.1, 1)
+
+    if (e.target.darkLevel <1) {
+        e.target.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${e.target.darkLevel})`
+    } else  {
+        e.target.style.backgroundColor = "rgb(0, 0, 0)"
+
+    } 
+})
